@@ -38,6 +38,7 @@ with doc:
                 lineas[i] = linea.rstrip()
                 palabras = lineas[i].rsplit()
                 j = 0
+                #Verifica el inicio de la linea
                 if lineas[i].startswith('"""') or lineas[i].startswith("'''") or lineas[i].startswith("#"):
                     if (re.match(lexico[5],lineas[i])):
                         span(lineas[i],cls = "comentarios")
@@ -61,14 +62,25 @@ with doc:
                             span(palabra,cls = "strings")
                         else:
                             try:
+                                #Revisa si la palabra es una variable y si la palabra siguiente es un operador
                                 if (re.match(lexico[0],palabra) and re.match(lexico[1],palabras[j+1])):
                                     span(palabra,cls = "variables")
+                                #Revisa si la palabra es una variable y si la palabra anterior es una PR
                                 elif(re.match(lexico[0],palabra) and re.match(lexico[7],palabras[j-1])):
                                     span(palabra,cls = "variables")
+                                #Si no es ninguno
                                 else:
                                     span(palabra)
                             except Exception as e:
-                                span(palabra)
+                                try:
+                                    #Revisa si la palabra es una variable y si la palabra anterior es un operador
+                                    if (re.match(lexico[0],palabra) and re.match(lexico[1],palabras[j-1])):
+                                        span(palabra,cls = "variables")
+                                    #Si no es ninguno
+                                    else:
+                                        span(palabra)    
+                                except Exception as e:
+                                    span(palabra)
                         j += 1
             i += 1
         #for linea in lineas
