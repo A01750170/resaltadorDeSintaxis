@@ -48,6 +48,7 @@ with doc:
                     else:
                         pass
                 else:
+                    #palabras.append("")
                     for palabra in palabras:
                         if (re.match(lexico[1],palabra)):
                             span(palabra,cls = "operadores")
@@ -57,12 +58,19 @@ with doc:
                             span(palabra,cls = "flotante")
                         elif(re.match(lexico[7],palabra)):
                             span(palabra, cls = "palabrasReservadas")
-                        elif (re.match(lexico[0],palabra)):
-                            span(palabra,cls = "variables")
                         elif(re.match(lexico[4],palabra)):
                             span(palabra,cls = "strings")
                         else:
-                            span(palabra)
+                            try:
+                                print(palabra + " | sig:" + palabras[j+1])
+                                if (re.match(lexico[0],palabra) and re.match(lexico[1],palabras[j+1])):
+                                    span(palabra,cls = "variables")
+                                elif(re.match(lexico[0],palabra) and re.match(lexico[7],palabras[j-1])):
+                                    span(palabra,cls = "variables")
+                                else:
+                                    span(palabra)
+                            except Exception as e:
+                                span(palabra)
                         j += 1
             i += 1
         #for linea in lineas
