@@ -38,15 +38,14 @@ with doc:
                 lineas[i] = linea.rstrip()
                 palabras = lineas[i].rsplit()
                 j = 0
-                if lineas[i].startswith('"') or lineas[i].startswith("'") or lineas[i].startswith("#"):
-                    if (re.match(lexico[4],lineas[i])):
-                        span(lineas[i],cls = "strings")
-                    elif (re.match(lexico[5],lineas[i])):
+                if lineas[i].startswith('"""') or lineas[i].startswith("'''") or lineas[i].startswith("#"):
+                    if (re.match(lexico[5],lineas[i])):
                         span(lineas[i],cls = "comentarios")
                     elif (re.match(lexico[6],lineas[i])):
-                        span(lineas[i],cls = "comentariosMult")
-                    else:
-                        pass
+                        span(lineas[i],cls = "comentariosMult")                    
+                elif lineas[i].startswith("'") or lineas[i].startswith('"'):
+                    if (re.match(lexico[4],lineas[i])):
+                        span(lineas[i],cls = "strings")
                 else:
                     #palabras.append("")
                     for palabra in palabras:
@@ -62,7 +61,6 @@ with doc:
                             span(palabra,cls = "strings")
                         else:
                             try:
-                                print(palabra + " | sig:" + palabras[j+1])
                                 if (re.match(lexico[0],palabra) and re.match(lexico[1],palabras[j+1])):
                                     span(palabra,cls = "variables")
                                 elif(re.match(lexico[0],palabra) and re.match(lexico[7],palabras[j-1])):
