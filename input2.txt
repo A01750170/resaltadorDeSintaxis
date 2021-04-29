@@ -35,8 +35,8 @@ with doc:
             with div():
                 attr(cls='estilo')
                 k = 0
-                while(linea[k] == " "):
-                    print(lineas[k])
+                while(lineas[i][k] == " "):
+                    print(lineas[i][k])
                     span("_", cls = "tabulador")
                     k += 1
                 lineas[i] = linea.rstrip()

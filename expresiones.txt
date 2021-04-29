@@ -4,5 +4,5 @@ _+\w+|\w+
 [0-9]+\.[0-9]+
 ".+"|".+|.+"|'.*'|'.+|.+'
 #+.+
-'{3}.+'{3}|"{3}.*"{3}
+'{3}.*'{3}|"{3}.*"{3}
 and|del|for|is|raise|assert|elif|from|lambda|return|break|else|global|not|try|class|except|if|or|while|continue|exec|import|pass|with|True|False|None|as|async|await|finally|global|while|yield|or|do|in
