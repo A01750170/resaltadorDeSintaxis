@@ -30,13 +30,13 @@ with doc:
     body(cls = "estilo")
     with open("input.txt","r",encoding = "utf8") as input:
         lineas = input.readlines()
-        i = 0
+        i=0
         for linea in lineas:
             with div():
                 attr(cls='estilo')
                 k = 0
-                while(lineas[i][k] == " "):
-                    print(lineas[i][k])
+                while(linea[k] == " "):
+                    print(lineas[k])
                     span("_", cls = "tabulador")
                     k += 1
                 lineas[i] = linea.rstrip()
