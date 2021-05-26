@@ -106,13 +106,12 @@ def resaltar(inputTxt):
     html.close()
 
 def main():
-    ruta = ".\\codigos\\"
+    ruta = "./codigos/"
     archivos = os.listdir(ruta)
-    print(ceil(len(archivos)/4))
     with ProcessPoolExecutor(max_workers = 4) as executor:
        results = executor.map(resaltar, archivos, timeout=None, chunksize=ceil(len(archivos)/4))
 
 if __name__ == '__main__':
     tiempoInicio = datetime.datetime.now()
     main()
-    print(datetime.datetime.now() - tiempoInicio)
+    print("Tiempo en paralelo:" + str(datetime.datetime.now() - tiempoInicio))

@@ -110,4 +110,4 @@ def main():
 if __name__ == '__main__':
     tiempoInicio = datetime.datetime.now()
     main()
-    print(datetime.datetime.now() - tiempoInicio)
+    print("Tiempo en lineal:" + str(datetime.datetime.now() - tiempoInicio))
