@@ -26,8 +26,8 @@ with open("./config/expresiones.txt","r") as archivo:
         i += 1
 archivo.close()
 
-def resaltar(inputTxt, ruta):
-    doc = dominate.document(title=inputTxt.split('\\')[-1].split('.')[0])
+def resaltar(inputTxt):
+    doc = dominate.document(title=inputTxt)
     with doc.head:
         link(rel='stylesheet', href='../config/estilo.css')
         meta(charset = "UTF-8")
@@ -35,7 +35,7 @@ def resaltar(inputTxt, ruta):
 
     with doc:
         body(cls = "estilo")
-        with open(inputTxt,"r",encoding = "utf8") as input:
+        with open("./codigos/" + inputTxt,"r",encoding = "utf8") as input:
             lineas = input.readlines()
             i=0
             for linea in lineas:
@@ -100,7 +100,7 @@ def resaltar(inputTxt, ruta):
             #for linea in lineas
         input.close()
     # print(str(doc))
-    salida = "resaltado/" + inputTxt.split('\\')[-1].split('.')[0] + ".html"
+    salida = "resaltado/" + inputTxt + ".html"
     html = open(salida,"w",encoding = "utf8")
     html.write(str(doc))
     html.close()
@@ -108,12 +108,8 @@ def resaltar(inputTxt, ruta):
 def main():
     ruta = ".\\codigos\\"
     archivos = os.listdir(ruta)
-    x = 0
-    for arc in archivos:
-        archivos[x] = ruta + arc
-        x += 1
     with ProcessPoolExecutor(max_workers = 4) as executor:
-       results = executor.map(resaltar, archivos, ruta, timeout=None, chunksize=ceil(len(archivos)/4))
+       results = executor.map(resaltar, archivos, timeout=None, chunksize=ceil(len(archivos)/4))
 
 if __name__ == '__main__':
     tiempoInicio = datetime.datetime.now()
