@@ -1,4 +1,6 @@
 import re
+import os
+import pathlib
 import dominate
 from dominate.tags import *
 from concurrent.futures import ProcessPoolExecutor
@@ -16,7 +18,7 @@ comentariosMult = ""
 palabrasReservadas = ""
 lexico = [variables,operadores,enteros,flotante,strings,comentarios,comentariosMult,palabrasReservadas]
 #Se lee el archivo y se guardan las expresiones
-with open("expresiones.txt","r") as archivo:
+with open("./config/expresiones.txt","r") as archivo:
     expresiones = archivo.readlines()
     i = 0
     for expresion in expresiones:
@@ -24,16 +26,16 @@ with open("expresiones.txt","r") as archivo:
         i += 1
 archivo.close()
 
-def resaltar(inputTxt):
-    doc = dominate.document(title=inputTxt)
+def resaltar(inputTxt, ruta):
+    doc = dominate.document(title=inputTxt.split('\\')[-1].split('.')[0])
     with doc.head:
-        link(rel='stylesheet', href='estilo.css')
+        link(rel='stylesheet', href='../config/estilo.css')
         meta(charset = "UTF-8")
         meta(name = "viewport", content = "width= device-width, initial-scale= 1")
 
     with doc:
         body(cls = "estilo")
-        with open(inputTxt+".txt","r",encoding = "utf8") as input:
+        with open(inputTxt,"r",encoding = "utf8") as input:
             lineas = input.readlines()
             i=0
             for linea in lineas:
@@ -97,22 +99,21 @@ def resaltar(inputTxt):
                 i += 1
             #for linea in lineas
         input.close()
-    html = open(inputTxt + ".html","w",encoding = "utf8")
+    # print(str(doc))
+    salida = "resaltado/" + inputTxt.split('\\')[-1].split('.')[0] + ".html"
+    html = open(salida,"w",encoding = "utf8")
     html.write(str(doc))
     html.close()
 
 def main():
-    archivos = []
-    while True:
-        archivo = input("Ingresa el nombre del archivo (txt) sin extension. (Deja en blanco para finalizar):")
-        if archivo == "":
-            break
-        else:
-            archivos.append(archivo)
-    print(archivos)
-    print(ceil(len(archivos)/4))
+    ruta = ".\\codigos\\"
+    archivos = os.listdir(ruta)
+    x = 0
+    for arc in archivos:
+        archivos[x] = ruta + arc
+        x += 1
     with ProcessPoolExecutor(max_workers = 4) as executor:
-       results = executor.map(resaltar, archivos, timeout=None, chunksize=ceil(len(archivos)/4))
+       results = executor.map(resaltar, archivos, ruta, timeout=None, chunksize=ceil(len(archivos)/4))
 
 if __name__ == '__main__':
     tiempoInicio = datetime.datetime.now()
