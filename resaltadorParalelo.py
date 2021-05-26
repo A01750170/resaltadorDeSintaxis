@@ -1,10 +1,8 @@
 import re
 import os
-import pathlib
 import dominate
 from dominate.tags import *
 from concurrent.futures import ProcessPoolExecutor
-import threading
 import datetime
 from math import ceil
 #Creacion de los léxicos
@@ -108,8 +106,8 @@ def resaltar(inputTxt):
 def main():
     ruta = "./codigos/"
     archivos = os.listdir(ruta)
-    with ProcessPoolExecutor(max_workers = 4) as executor:
-       results = executor.map(resaltar, archivos, timeout=None, chunksize=ceil(len(archivos)/4))
+    with ProcessPoolExecutor(max_workers = 16) as executor:
+       executor.map(resaltar, archivos, timeout=None, chunksize=ceil(len(archivos)/16))
 
 if __name__ == '__main__':
     tiempoInicio = datetime.datetime.now()

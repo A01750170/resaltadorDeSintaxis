@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>input3 - copia (34) - copia</title>
+    <link href="../config/estilo.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta content="width= device-width, initial-scale= 1" name="viewport">
+  </head>
+  <body>
+    <body class="estilo"></body>
+    <div class="estilo">
+      <span class="palabrasReservadas">import</span>
+      <span class="variables">re</span>
+    </div>
+    <div class="estilo">
+      <span class="palabrasReservadas">import</span>
+      <span class="palabrasReservadas">dominate</span>
+    </div>
+    <div class="estilo">
+      <span class="palabrasReservadas">from</span>
+      <span class="palabrasReservadas">dominate.tags</span>
+      <span class="palabrasReservadas">import</span>
+      <span class="operadores">*</span>
+    </div>
+    <div class="estilo">
+      <span class="comentarios">#Creacion de los léxicos</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">variables</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">operadores</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">enteros</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">flotante</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">strings</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">comentarios</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">comentariosMult</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">palabrasReservadas</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;&quot;</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">lexico</span>
+      <span class="operadores">=</span>
+      <span>[variables,operadores,enteros,flotante,strings,comentarios,comentariosMult,palabrasReservadas]</span>
+    </div>
+    <div class="estilo">
+      <span class="comentarios">#Se lee el archivo y se guardan las expresiones</span>
+    </div>
+    <div class="estilo">
+      <span class="palabrasReservadas">with</span>
+      <span class="strings">open(&quot;expresiones.txt&quot;,&quot;r&quot;)</span>
+      <span class="palabrasReservadas">as</span>
+      <span class="variables">archivo:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">expresiones</span>
+      <span class="operadores">=</span>
+      <span class="variables">archivo.readlines()</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">i</span>
+      <span class="operadores">=</span>
+      <span class="enteros">0</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">for</span>
+      <span class="variables">expresion</span>
+      <span class="palabrasReservadas">in</span>
+      <span class="variables">expresiones:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">lexico[i]</span>
+      <span class="operadores">=</span>
+      <span class="variables">expresion.rstrip()</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">i</span>
+      <span class="operadores">+=</span>
+      <span class="enteros">1</span>
+    </div>
+    <div class="estilo">
+      <span>archivo.close()</span>
+    </div>
+    <div class="estilo">
+      <span class="palabrasReservadas">doc</span>
+      <span class="operadores">=</span>
+      <span class="palabrasReservadas">dominate.document(title='Resaltador</span>
+      <span class="variables">de</span>
+      <span>sintaxis</span>
+      <span>de</span>
+      <span class="strings">Python')</span>
+    </div>
+    <div class="estilo"></div>
+    <div class="estilo">
+      <span class="palabrasReservadas">with</span>
+      <span class="palabrasReservadas">doc.head:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="strings">link(rel='stylesheet',</span>
+      <span class="strings">href='estilo.css')</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">meta(charset</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;UTF-8&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">meta(name</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;viewport&quot;,</span>
+      <span class="variables">content</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;width=</span>
+      <span>device-width,</span>
+      <span class="palabrasReservadas">initial-scale=</span>
+      <span class="enteros">1&quot;)</span>
+    </div>
+    <div class="estilo"></div>
+    <div class="estilo">
+      <span class="palabrasReservadas">with</span>
+      <span class="palabrasReservadas">doc:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">body(cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;estilo&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">with</span>
+      <span class="strings">open(&quot;input.txt&quot;,&quot;r&quot;,encoding</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;utf8&quot;)</span>
+      <span class="palabrasReservadas">as</span>
+      <span class="palabrasReservadas">input:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">lineas</span>
+      <span class="operadores">=</span>
+      <span class="palabrasReservadas">input.readlines()</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>i=0</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">for</span>
+      <span class="variables">linea</span>
+      <span class="palabrasReservadas">in</span>
+      <span class="variables">lineas:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">with</span>
+      <span class="variables">div():</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="strings">attr(cls='estilo')</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">k</span>
+      <span class="operadores">=</span>
+      <span class="enteros">0</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">while(linea[k]</span>
+      <span class="operadores">==</span>
+      <span>&quot;</span>
+      <span class="strings">&quot;):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>print(lineas[k])</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="strings">span(&quot;_&quot;,</span>
+      <span class="variables">cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;tabulador&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">k</span>
+      <span class="operadores">+=</span>
+      <span class="enteros">1</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">lineas[i]</span>
+      <span class="operadores">=</span>
+      <span class="variables">linea.rstrip()</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">palabras</span>
+      <span class="operadores">=</span>
+      <span class="variables">lineas[i].rsplit()</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">j</span>
+      <span class="operadores">=</span>
+      <span class="enteros">0</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Por</span>
+      <span>n</span>
+      <span>linea</span>
+      <span>recorres</span>
+      <span>n</span>
+      <span>veces</span>
+      <span>los</span>
+      <span>caracteres</span>
+      <span>de</span>
+      <span>la</span>
+      <span>linea</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Por</span>
+      <span>n</span>
+      <span>linea</span>
+      <span>recorres</span>
+      <span>n</span>
+      <span>veces</span>
+      <span>las</span>
+      <span>palabras</span>
+      <span>que</span>
+      <span>tiene</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Verifica</span>
+      <span>el</span>
+      <span class="palabrasReservadas">inicio</span>
+      <span class="variables">de</span>
+      <span>la</span>
+      <span>linea</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">if</span>
+      <span class="strings">lineas[i].startswith('&quot;&quot;&quot;')</span>
+      <span class="palabrasReservadas">or</span>
+      <span class="strings">lineas[i].startswith(&quot;'''&quot;)</span>
+      <span class="palabrasReservadas">or</span>
+      <span class="strings">lineas[i].startswith(&quot;#&quot;):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">if</span>
+      <span>(re.match(lexico[5],lineas[i])):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(lineas[i],cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;comentarios&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">elif</span>
+      <span>(re.match(lexico[6],lineas[i])):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(lineas[i],cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;comentariosMult&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">elif</span>
+      <span class="strings">lineas[i].startswith(&quot;'&quot;)</span>
+      <span class="palabrasReservadas">or</span>
+      <span class="strings">lineas[i].startswith('&quot;'):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">if</span>
+      <span>(re.match(lexico[4],lineas[i])):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(lineas[i],cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;strings&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">else:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="strings">#palabras.append(&quot;&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">for</span>
+      <span class="variables">palabra</span>
+      <span class="palabrasReservadas">in</span>
+      <span class="variables">palabras:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">if</span>
+      <span>(re.match(lexico[1],palabra)):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(palabra,cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;operadores&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">elif</span>
+      <span>(re.match(lexico[2],palabra)):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(palabra,cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;enteros&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">elif</span>
+      <span>(re.match(lexico[3],palabra)):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(palabra,cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;flotante&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">elif(re.match(lexico[7],palabra)):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>span(palabra,</span>
+      <span class="variables">cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;palabrasReservadas&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">elif(re.match(lexico[4],palabra)):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(palabra,cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;strings&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">else:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">try:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Revisa</span>
+      <span>si</span>
+      <span>la</span>
+      <span>palabra</span>
+      <span>es</span>
+      <span>una</span>
+      <span>variable</span>
+      <span>y</span>
+      <span>si</span>
+      <span>la</span>
+      <span>palabra</span>
+      <span>siguiente</span>
+      <span>es</span>
+      <span>un</span>
+      <span>operador</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">if</span>
+      <span>(re.match(lexico[0],palabra)</span>
+      <span class="palabrasReservadas">and</span>
+      <span class="variables">re.match(lexico[1],palabras[j+1])):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(palabra,cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;variables&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Revisa</span>
+      <span>si</span>
+      <span>la</span>
+      <span>palabra</span>
+      <span>es</span>
+      <span>una</span>
+      <span>variable</span>
+      <span>y</span>
+      <span>si</span>
+      <span>la</span>
+      <span>palabra</span>
+      <span>anterior</span>
+      <span>es</span>
+      <span>una</span>
+      <span>PR</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">elif(re.match(lexico[0],palabra)</span>
+      <span class="palabrasReservadas">and</span>
+      <span class="variables">re.match(lexico[7],palabras[j-1])):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(palabra,cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;variables&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Si</span>
+      <span>no</span>
+      <span>es</span>
+      <span>ninguno</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">else:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>span(palabra)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">except</span>
+      <span class="variables">Exception</span>
+      <span class="palabrasReservadas">as</span>
+      <span class="variables">e:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">try:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Revisa</span>
+      <span>si</span>
+      <span>la</span>
+      <span>palabra</span>
+      <span>es</span>
+      <span>una</span>
+      <span>variable</span>
+      <span>y</span>
+      <span>si</span>
+      <span>la</span>
+      <span>palabra</span>
+      <span>anterior</span>
+      <span>es</span>
+      <span>un</span>
+      <span>operador</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">if</span>
+      <span>(re.match(lexico[0],palabra)</span>
+      <span class="palabrasReservadas">and</span>
+      <span class="variables">re.match(lexico[1],palabras[j-1])):</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">span(palabra,cls</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;variables&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#Si</span>
+      <span>no</span>
+      <span>es</span>
+      <span>ninguno</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">else:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>span(palabra)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">except</span>
+      <span class="variables">Exception</span>
+      <span class="palabrasReservadas">as</span>
+      <span class="variables">e:</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>span(palabra)</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">j</span>
+      <span class="operadores">+=</span>
+      <span class="enteros">1</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="variables">i</span>
+      <span class="operadores">+=</span>
+      <span class="enteros">1</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span>#for</span>
+      <span>linea</span>
+      <span class="palabrasReservadas">in</span>
+      <span class="variables">lineas</span>
+    </div>
+    <div class="estilo">
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="tabulador">_</span>
+      <span class="palabrasReservadas">input.close()</span>
+    </div>
+    <div class="estilo">
+      <span class="variables">html</span>
+      <span class="operadores">=</span>
+      <span class="strings">open(&quot;resaltadorSintaxis.html&quot;,&quot;w&quot;,encoding</span>
+      <span class="operadores">=</span>
+      <span class="strings">&quot;utf8&quot;)</span>
+    </div>
+    <div class="estilo">
+      <span>html.write(str(doc))</span>
+    </div>
+    <div class="estilo">
+      <span>html.close()</span>
+    </div>
+  </body>
+</html>

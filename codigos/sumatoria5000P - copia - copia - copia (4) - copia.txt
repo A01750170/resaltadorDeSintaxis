@@ -1,0 +1,37 @@
+# David Rodriguez Fragoso A01748760
+# Erick Henandez Silva A01750170
+
+from math import ceil
+from concurrent.futures import ProcessPoolExecutor
+import threading
+import datetime
+z = 0
+def calcularPrimos(n):
+    if n > 2:
+        for i in range ( 2 , ceil ( n ** 0.5 ) + 1 ) :
+            if n % i == 0:
+                return False
+        return n
+    else:
+        return False
+
+def sumatoria(n):
+    global z
+    z += n
+
+def main():
+    global z
+    i = 1
+    i = range ( 0 , 50000001 )
+    with ProcessPoolExecutor ( max_workers = 4 ) as executor:
+        results = executor.map ( calcularPrimos, i, timeout=None, chunksize = 1250000 )
+    print ( "Sumando..." )
+    with ProcessPoolExecutor(max_workers = 4) as executor:
+        results = executor.map ( sumatoria, results, timeout=None, chunksize = 1250000 )
+    print ( z )
+
+if __name__ == '__main__':
+    print ( "Iniciando..." )
+    tiempoInicio = datetime.datetime.now()
+    main()
+    print ( datetime.datetime.now() - tiempoInicio )

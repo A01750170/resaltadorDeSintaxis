@@ -1,0 +1,15 @@
+import re
+import dominate
+from dominate.tags import *
+#Creacion de los léxicos
+variables = ""
+operadores = ""
+enteros = ""
+flotante = ""
+strings = ""
+comentarios = ""
+comentariosMult = ""
+palabrasReservadas = ""
+
+print ( "Hello" )
+print ( "Wold!" )
