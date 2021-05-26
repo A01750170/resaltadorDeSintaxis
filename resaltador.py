@@ -21,8 +21,9 @@ with open("./config/expresiones.txt","r") as archivo:
         lexico[i] = expresion.rstrip()
         i += 1
 archivo.close()
+
 def resaltar(inputTxt):
-    doc = dominate.document(title=inputTxt.split('\\')[-1].split('.')[0])
+    doc = dominate.document(title=inputTxt.split('/')[-1].split('.')[0])
     with doc.head:
         link(rel='stylesheet', href='../config/estilo.css')
         meta(charset = "UTF-8")
@@ -94,7 +95,6 @@ def resaltar(inputTxt):
                 i += 1
             #for linea in lineas
         input.close()
-    # print(str(doc))
     salida = "resaltado/" + inputTxt.split('/')[-1].split('.')[0] + ".html"
     html = open(salida,"w",encoding = "utf8")
     html.write(str(doc))

@@ -100,7 +100,7 @@ def resaltar(inputTxt):
             #for linea in lineas
         input.close()
     # print(str(doc))
-    salida = "resaltado/" + inputTxt + ".html"
+    salida = "resaltado/" + inputTxt.split('.')[0] + ".html"
     html = open(salida,"w",encoding = "utf8")
     html.write(str(doc))
     html.close()
@@ -108,6 +108,7 @@ def resaltar(inputTxt):
 def main():
     ruta = ".\\codigos\\"
     archivos = os.listdir(ruta)
+    print(ceil(len(archivos)/4))
     with ProcessPoolExecutor(max_workers = 4) as executor:
        results = executor.map(resaltar, archivos, timeout=None, chunksize=ceil(len(archivos)/4))
 
