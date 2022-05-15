@@ -1,0 +1,30 @@
+# David Rodriguez Fragoso A01748760
+# Erick Henandez Silva A01750170
+
+from math import ceil
+import datetime
+def calcularPrimos(n):
+"""Calcula si el numero es primo o no"""
+    if n > 2:
+        for i in range ( 2 , ceil ( n ** 0.5) + 1 ) :
+            if n % i == 0:
+                return False
+            else:
+                i += 1
+        return True
+    else:
+        return False
+
+
+def main():
+    tiempoInicio = datetime.datetime.now()
+    i = 1
+    z = 0
+    while i <= 50000000.:
+        if (calcularPrimos(i)):
+            z += i
+        i += 1
+    print(z)
+    print(datetime.datetime.now() - tiempoInicio)
+
+main()
